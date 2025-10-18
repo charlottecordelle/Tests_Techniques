@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SceneComponent } from './scene.component';
+import { SceneViewer } from './scene-viewer.component';
 
-describe('SceneComponent', () => {
-  let component: SceneComponent;
-  let fixture: ComponentFixture<SceneComponent>;
+describe('SceneViewerComponent', () => {
+  let component: SceneViewer;
+  let fixture: ComponentFixture<SceneViewer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SceneComponent]
+      imports: [SceneViewer]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SceneComponent);
+    fixture = TestBed.createComponent(SceneViewer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,7 +10,7 @@ export interface Walls {
     startCoordonates: Coordonate;
     endCoordonates: Coordonate;
     windows: WindowsModel[];
-    doors: Doors;
+    doors: Doors[];
     // isCommonWall: boolean;
     // levelId: number;
 }
