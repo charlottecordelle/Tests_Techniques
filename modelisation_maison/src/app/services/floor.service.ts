@@ -12,7 +12,7 @@ export class FloorService {
     const width = safeArea/safeLength;
 
     const FloorGeometry = new THREE.PlaneGeometry(safeLength * 100/20, width * 100/20);
-    const FloorMaterial = new THREE.MeshStandardMaterial({color: 'blue', side: THREE.DoubleSide});
+    const FloorMaterial = new THREE.MeshStandardMaterial({color: '#7f4f24', side: THREE.DoubleSide});
     const Floor = new THREE.Mesh(FloorGeometry, FloorMaterial);
     Floor.name = 'floor';
 

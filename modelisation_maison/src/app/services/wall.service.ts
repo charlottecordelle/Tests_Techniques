@@ -20,7 +20,7 @@ export class WallService {
     const wallGroup = new THREE.Group();
  
     const wallGeometry = new THREE.BoxGeometry(wallWidth, wallHeight, wallDepth);
-    const wallMaterial = new THREE.MeshStandardMaterial({color: 0xE8E8E8});
+    const wallMaterial = new THREE.MeshStandardMaterial({color: '939597'});
     const wallMesh = new THREE.Mesh(wallGeometry, wallMaterial);
  
     let wallCSG = CSG.fromMesh(wallMesh);
