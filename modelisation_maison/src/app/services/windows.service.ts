@@ -9,11 +9,11 @@ export class WindowsService {
   private depth: number = 0.2;
 
   createWindow(windowData: Windows): THREE.Mesh {
-    const WindowHeight = (windowData.height || 120)/20;
-    const WindowWidth = (windowData.width || 100)/20;
+    const WindowHeight = (windowData.height || 1.2)* 100/20;
+    const WindowWidth = (windowData.width || 1)* 100/20;
 
     const WindowGeometry = new THREE.BoxGeometry(WindowWidth, WindowHeight, this.depth);
-    const WindowMaterial = new THREE.MeshStandardMaterial({color: 'white'});
+    const WindowMaterial = new THREE.MeshStandardMaterial({color: '#1b263b'});
     const Window = new THREE.Mesh(WindowGeometry, WindowMaterial);
     Window.name = 'window';
     Window.castShadow = true,

@@ -20,12 +20,11 @@ export class RoofService {
     
     Roof.rotation.x = -Math.PI/2;
     Roof.position.y = yPosition;
+    Roof.position.x = (length * scale)/2;
+    Roof.position.z = (width * scale)/2;
 
     Roof.castShadow = true;
     Roof.receiveShadow = true;
-    
-    Roof.position.x = (length * scale)/2;
-    Roof.position.z = (width * scale)/2;
 
     return Roof;
   }

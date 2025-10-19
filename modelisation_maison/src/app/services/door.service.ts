@@ -10,13 +10,14 @@ export class DoorService {
   constructor() { }
 
   createDoor(doorData: Doors): THREE.Mesh {
-    const doorHeight = (doorData.height || 200)/20;
-    const doorWidth = (doorData.width || 80)/20;
+    const doorHeight = (doorData.height || 2.1)* 100/20;
+    const doorWidth = (doorData.width || 1)* 100/20;
 
     const DoorGeometry = new THREE.BoxGeometry(doorWidth, doorHeight, this.depth);
-    const DoorMaterial = new THREE.MeshStandardMaterial({color: 'brown'});
+    const DoorMaterial = new THREE.MeshStandardMaterial({color: '#386641'});
     const Door = new THREE.Mesh(DoorGeometry, DoorMaterial);
     Door.name = 'door';
+    
     Door.castShadow = true;
     Door.receiveShadow = true;
 

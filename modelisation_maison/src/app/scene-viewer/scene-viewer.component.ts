@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as THREE from 'three';
-import { ViewChild, Input, ElementRef, OnInit, AfterViewInit, SimpleChanges, HostListener } from '@angular/core';
+import { ViewChild, Input, ElementRef, OnInit, AfterViewInit, SimpleChanges} from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { Houses } from '../models/houses.interface';
 import { HouseService } from '../services/house.service';
@@ -49,7 +49,6 @@ export class SceneViewer implements OnInit, AfterViewInit {
   }
  
   private initThree(): void {
-    console.log(this.house);
     const container = this.canvasRef.nativeElement;
  
     this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas: container });
@@ -77,19 +76,6 @@ export class SceneViewer implements OnInit, AfterViewInit {
     const ambient = new THREE.AmbientLight(0xffffff, 0.4);
     this.scene.add(ambient);
  
-    const sun = new THREE.DirectionalLight(0xffffff, 0.8);
-    sun.position.set(50, 50, 50);
-    sun.castShadow = true;
-    sun.shadow.camera.left = -50;
-    sun.shadow.camera.right = 50;
-    sun.shadow.camera.top = 50;
-    sun.shadow.camera.bottom = -50;
-    this.scene.add(sun);
- 
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
-    fillLight.position.set(-30, 20, -30);
-    this.scene.add(fillLight);
- 
     const axesHelper = new THREE.AxesHelper(200);
     this.scene.add(axesHelper);
 
@@ -109,14 +95,6 @@ export class SceneViewer implements OnInit, AfterViewInit {
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
   }
- 
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(event: Event): void {
-    const container = this.canvasRef.nativeElement;
-    this.camera.aspect = container.clientWidth / container.clientHeight;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setSize(container.clientWidth, container.clientHeight);
-  }
 
   toggleVisibility(name: string) {
     if (!this.houseGroup) return;
@@ -129,13 +107,13 @@ export class SceneViewer implements OnInit, AfterViewInit {
  
   toggleAllVisibility() {
     if (!this.houseGroup) return;
-    const allVisible = this.houseGroup.visible; // si la maison est visible
+    const allVisible = this.houseGroup.visible;
     this.houseGroup.traverse((child: any) => {
       if (child.name) {
         child.visible = !allVisible;
       }
     });
-    this.houseGroup.visible = !allVisible; // inverse l’état global
+    this.houseGroup.visible = !allVisible;
   }
 
   private updateHouse(): void {

@@ -36,7 +36,6 @@ export class LevelService {
       levelGroup.add(floor);
     }
  
-    console.log(levelGroup)
     return levelGroup;
   }
  

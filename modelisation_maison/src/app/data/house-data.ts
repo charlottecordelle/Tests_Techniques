@@ -8,7 +8,7 @@ import { Coordonate } from '../models/coordonate.interface';
 
 export const testHouse: Houses = {
   id: 1,
-  name: 'Maison Test',
+  name: 'Maison',
   numberOfLevels: 1,
   numberOfCommonWall: 0,
   projectId: 1,
