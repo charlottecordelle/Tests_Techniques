@@ -15,6 +15,7 @@ export class WindowsService {
     const WindowGeometry = new THREE.BoxGeometry(WindowWidth, WindowHeight, this.depth);
     const WindowMaterial = new THREE.MeshStandardMaterial({color: 'white'});
     const Window = new THREE.Mesh(WindowGeometry, WindowMaterial);
+    Window.name = 'window';
     Window.castShadow = true,
     Window.receiveShadow = true;
 

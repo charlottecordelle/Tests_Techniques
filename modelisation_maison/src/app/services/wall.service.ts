@@ -29,7 +29,8 @@ export class WallService {
     wallCSG = this.addDoorOpenings(wallCSG, wallData.doors || [], wallGroup, wallDepth, wallWidth, wallHeight);
  
     const finalWall = CSG.toMesh(wallCSG, new THREE.Matrix4(), wallMaterial) as THREE.Mesh<THREE.BufferGeometry>; 
-    finalWall.position.y = wallHeight / 2
+    finalWall.name = 'wall';
+    finalWall.position.y = wallHeight / 2;
     wallGroup.add(finalWall);
     wallGroup.position.y = wallHeight / 2;
     
@@ -59,6 +60,7 @@ export class WallService {
     const windowObject = this.windowService.createWindow(window);
     windowObject.position.set(x, y + wallHeight/2, 0); 
     wallGroup.add(windowObject);
+    windowObject.name = 'window';
     });
  
     return wallCSG;
@@ -85,6 +87,7 @@ export class WallService {
     const doorObject = this.doorService.createDoor(door);
     doorObject.position.set(x, y + wallHeight/2, 0);
     wallGroup.add(doorObject);
+    doorObject.name = 'door';
     });
  
   return wallCSG;

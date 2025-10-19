@@ -14,11 +14,14 @@ export class FloorService {
     const FloorGeometry = new THREE.PlaneGeometry(safeLength * 100/20, width * 100/20);
     const FloorMaterial = new THREE.MeshStandardMaterial({color: 'blue', side: THREE.DoubleSide});
     const Floor = new THREE.Mesh(FloorGeometry, FloorMaterial);
+    Floor.name = 'floor';
+
     Floor.rotation.x = -Math.PI/2;
-    Floor.receiveShadow = true;
-    Floor.castShadow = true;
     Floor.position.x = (safeLength * 100/20)/2;
     Floor.position.z = (width * 100/20)/2;
+
+    Floor.receiveShadow = true;
+    Floor.castShadow = true;
 
     return Floor;
   }

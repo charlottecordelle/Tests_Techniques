@@ -92,6 +92,16 @@ export class SceneViewer implements OnInit, AfterViewInit {
  
     const axesHelper = new THREE.AxesHelper(200);
     this.scene.add(axesHelper);
+
+    const resetCamera = () => {
+      this.camera.position.set(-45, 40, -45);
+      this.controls.target.set(0, 0, 0);
+      this.controls.update();
+    };    
+  
+    document.getElementById("resetcamera")!.addEventListener("click", () => {
+      resetCamera();
+    });
   }
  
   private animate(): void {
@@ -107,7 +117,27 @@ export class SceneViewer implements OnInit, AfterViewInit {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(container.clientWidth, container.clientHeight);
   }
+
+  toggleVisibility(name: string) {
+    if (!this.houseGroup) return;
+    this.houseGroup.traverse((child: any) => {
+      if (child.name && child.name.toLowerCase().includes(name.toLowerCase())) {
+        child.visible = !child.visible;
+      }
+    });
+  }
  
+  toggleAllVisibility() {
+    if (!this.houseGroup) return;
+    const allVisible = this.houseGroup.visible; // si la maison est visible
+    this.houseGroup.traverse((child: any) => {
+      if (child.name) {
+        child.visible = !allVisible;
+      }
+    });
+    this.houseGroup.visible = !allVisible; // inverse l’état global
+  }
+
   private updateHouse(): void {
     this.scene.remove(this.houseGroup);
     this.houseGroup = this.houseService.createHouse(this.house);;

@@ -16,6 +16,7 @@ export class DoorService {
     const DoorGeometry = new THREE.BoxGeometry(doorWidth, doorHeight, this.depth);
     const DoorMaterial = new THREE.MeshStandardMaterial({color: 'brown'});
     const Door = new THREE.Mesh(DoorGeometry, DoorMaterial);
+    Door.name = 'door';
     Door.castShadow = true;
     Door.receiveShadow = true;
 

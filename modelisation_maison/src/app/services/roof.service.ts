@@ -16,6 +16,8 @@ export class RoofService {
     const RoofGeometry = new THREE.PlaneGeometry(totalLength, totalWidth);
     const RoofMaterial = new THREE.MeshStandardMaterial({color: 'red', side: THREE.DoubleSide});
     const Roof = new THREE.Mesh(RoofGeometry, RoofMaterial);
+    Roof.name = 'roof';
+    
     Roof.rotation.x = -Math.PI/2;
     Roof.position.y = yPosition;
 
